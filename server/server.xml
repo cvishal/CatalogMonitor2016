@@ -1,0 +1,31 @@
+<server description="new server">
+    <!-- Enable features -->
+    <featureManager>
+        <feature>webProfile-7.0</feature>
+        <feature>localConnector-1.0</feature>
+        <feature>icap:managementConnector-1.0</feature>
+        <feature>appstate-1.0</feature>
+        <feature>jdbc-4.1</feature>
+        <feature>cloudAutowiring-1.0</feature>
+    </featureManager>
+    <!-- To access this server from a remote client add a host attribute to the following element, e.g. host="*" -->
+    <httpEndpoint httpPort="${port}" id="defaultHttpEndpoint" host="*"/>
+    <!-- Automatically expand WAR files and EAR files -->
+    <applicationManager autoExpand="true"/>
+    <webContainer deferServletLoad="false" trustHostHeaderPort="true" extractHostHeaderPort="true"/>
+    <applicationMonitor updateTrigger="mbean"/>
+    <webApplication id="CatalogMonitor" location="CatalogMonitor.war" name="CatalogMonitor"/>
+    <include location='runtime-vars.xml'/>
+    <logging logDirectory='${application.log.dir}' consoleLogLevel='INFO'/>
+    <httpDispatcher enableWelcomePage='false'/>
+    <config updateTrigger='mbean'/>
+    <appstate appName='CatalogMonitor' markerPath='${home}/../.liberty.state'/>
+    <dataSource id='mysql-CatalogDB' jdbcDriverRef='mysql-driver' jndiName='jdbc/CatalogDB' transactional='true' type='javax.sql.ConnectionPoolDataSource'>
+        <properties id='mysql-CatalogDB-props' databaseName='${cloud.services.CatalogDB.connection.name}' user='${cloud.services.CatalogDB.connection.user}' password='${cloud.services.CatalogDB.connection.password}' portNumber='${cloud.services.CatalogDB.connection.port}' serverName='${cloud.services.CatalogDB.connection.host}'/>
+        <connectionManager id='mysql-CatalogDB-conMgr' maxPoolSize='10'/>
+    </dataSource>
+    <jdbcDriver id='mysql-driver' javax.sql.XADataSource='org.mariadb.jdbc.MySQLDataSource' javax.sql.ConnectionPoolDataSource='org.mariadb.jdbc.MySQLDataSource' libraryRef='mysql-library'/>
+    <library id='mysql-library'>
+        <fileset id='mysql-fileset' dir='${server.config.dir}/lib'/>
+    </library>
+</server>
