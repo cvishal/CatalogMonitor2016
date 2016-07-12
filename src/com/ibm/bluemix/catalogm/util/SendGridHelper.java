@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ibm.bluemix.catalogm.dao.EmailSubscriptionsDao;
+
 public class SendGridHelper {
 	List<String> emailAddressesList = new ArrayList<String>();
 	String[] email2;
@@ -19,7 +21,7 @@ public class SendGridHelper {
 	public SendGridHelper() {
 		// Fill the email2 section here.
 		try {
-			StringBuffer sb = new StringBuffer();
+			/*StringBuffer sb = new StringBuffer();
 			InputStream fstream = null;
 			// fstream = new FileInputStream(_templateFileName);
 			ClassLoader classLoader = Thread.currentThread()
@@ -31,12 +33,15 @@ public class SendGridHelper {
 			String line = null;
 			while ((line = br.readLine()) != null) {
 				lines.add(line);
-			}
-			email2 = lines.toArray(new String[lines.size()]);
+			}*/
+			
+			EmailSubscriptionsDao emailDao = new EmailSubscriptionsDao();
+			List<String> emailIds = emailDao.getSubscribedEmails();
+			email2 = emailIds.toArray(new String[emailIds.size()]);
 
 			// Close the input stream
 
-			br.close();
+			//br.close();
 			
 			int numOfEmails = email2.length;
 			System.out.println("Email will be sent to : " + numOfEmails);
@@ -48,7 +53,7 @@ public class SendGridHelper {
 			listOfStackOF = new String[numOfEmails];
 
 			
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
