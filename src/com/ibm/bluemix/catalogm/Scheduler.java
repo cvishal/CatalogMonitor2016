@@ -149,6 +149,7 @@ public class Scheduler {
 			String __serviceData = response.substring(0, endPoint);
 			response = response.substring(endPoint);
 			servicesCount++;
+			startPoint = 0;
 			//System.out.println(" ******** "+__serviceData);
 			//ServiceData myservice = new ServiceData(__serviceData);
 			ServiceData myservice = new ServiceData(__serviceData,__isExperimental);
