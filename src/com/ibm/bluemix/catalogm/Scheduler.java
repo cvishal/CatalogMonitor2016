@@ -38,9 +38,9 @@ public class Scheduler {
 	
 	
 	//@Scheduled(cron="0 0/360 * * * ?")
-	//@Scheduled(cron="0 0 8-9 * * *" )
+	@Scheduled(cron="0 0 9 * * *" )
 	//@Scheduled(fixedRate=43200000)
-	@Scheduled(fixedRate=86400000)
+	//@Scheduled(fixedRate=86400000)
 	public void catalogCheck(){
          URL url;
          String response = null;
