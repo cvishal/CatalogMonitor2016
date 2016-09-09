@@ -14,7 +14,7 @@
     <applicationManager autoExpand="true"/>
     <webContainer deferServletLoad="false" trustHostHeaderPort="true" extractHostHeaderPort="true"/>
     <applicationMonitor updateTrigger="mbean"/>
-    <webApplication id="CatalogMonitor" location="CatalogMonitor.war" name="CatalogMonitor"/>
+    <webApplication id="CatalogMonitor" contextRoot="/" location="CatalogMonitor.war" name="CatalogMonitor"/>
     <include location='runtime-vars.xml'/>
     <logging logDirectory='${application.log.dir}' consoleLogLevel='INFO'/>
     <httpDispatcher enableWelcomePage='false'/>
