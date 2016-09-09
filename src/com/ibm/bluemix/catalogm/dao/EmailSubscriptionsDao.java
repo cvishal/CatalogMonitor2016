@@ -23,7 +23,9 @@ public class EmailSubscriptionsDao {
 		List<String> emailIds = new ArrayList<String>();
 		
 		try {
-			preparedStatement = (PreparedStatement) connection.prepareStatement("SELECT email_id from " + tableName);
+			String query = "SELECT email_id from " + tableName;
+			System.out.println("getSubscribedEmails : " + query);
+			preparedStatement = (PreparedStatement) connection.prepareStatement(query);
 			ResultSet rs = (ResultSet) preparedStatement.executeQuery();
 			while (rs.next()) {
 				String email_id = rs.getString("email_id");
@@ -36,6 +38,67 @@ public class EmailSubscriptionsDao {
 		}
 		
 		return emailIds;
+	}
+	
+	public String addSubscription(String emailId) {
+		String result = "";
+		
+		boolean ifSubscribed = checkIfSubscribed(emailId);
+		if(ifSubscribed)
+			result = "You have already subscribed to the Bluemix Monitor Service.";
+		else {
+			try {
+				String query = "insert into " + tableName + " (`name`, `email_id`) VALUES ('" + emailId + "','" + emailId + "')";
+				System.out.println("addSubscription : " + query);
+				preparedStatement = (PreparedStatement) connection.prepareStatement(query);
+				preparedStatement.executeUpdate();
+				result = "You have been subscribed to the Bluemix Monitor service.";
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
+	
+	public String removeSubscription(String emailId) {
+		String result = "";
+		
+		boolean ifSubscribed = checkIfSubscribed(emailId);
+		if(!ifSubscribed)
+			result = "You have not subscribed to the Bluemix Monitor Service.";
+		else {
+			try {
+				String query = "delete from " + tableName + " where email_id='" + emailId + "'";
+				System.out.println("removeSubscription : " + query);
+				preparedStatement = (PreparedStatement) connection.prepareStatement(query);
+				preparedStatement.executeUpdate();
+				result = "You have been unsubscribed to then Bluemix Monitor service.";
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
+	
+	public boolean checkIfSubscribed(String emailId) {
+		boolean result = false;
+		
+		try {
+			String query = "SELECT email_id from " + tableName + " where email_id='" + emailId + "'";
+			System.out.println("checkIfSubscribed : " + query);
+			preparedStatement = (PreparedStatement) connection.prepareStatement(query);
+			ResultSet rs = (ResultSet) preparedStatement.executeQuery();
+			while (rs.next()) {
+				result = true;
+				System.out.println("checkIfSubscribed : Found Email ID : " + emailId);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 	
 }
