@@ -37,9 +37,9 @@ public class SendGridHelper {
 			
 			EmailSubscriptionsDao emailDao = new EmailSubscriptionsDao();
 			List<String> emailIds = emailDao.getSubscribedEmails();
-			//email2 = emailIds.toArray(new String[emailIds.size()]);
-			email2 = new String [1];
-			email2[0] = "spansari@in.ibm.com";
+			email2 = emailIds.toArray(new String[emailIds.size()]);
+			/*email2 = new String [1];
+			email2[0] = "spansari@in.ibm.com";*/
 
 			// Close the input stream
 
