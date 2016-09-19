@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonIgnoreType;
 
-@JsonIgnoreProperties({"creation","url","alerts","_conflicts"})
+@JsonIgnoreProperties({"creation","url","alerts","_conflicts","id"})
 public class Obj {
 	 private String _rev;
 
