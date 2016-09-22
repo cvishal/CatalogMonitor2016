@@ -18,7 +18,7 @@ public class MonitorServlet extends HttpServlet {
 	
 	final String subButton = "Subscribe";
 	final String unsubButton = "Unsubscribe";
-	final String callback_url = "w3sso-driwbcjm4n-co15.iam.ibmcloud.com/https://w3id.alpha.sso.ibm.com/auth/sps/samlidp/saml20/";
+	final String callback_url = "sso-catalogmonitor-yj1c7jtddr-cm13.iam.ibmcloud.com/https://w3id.alpha.sso.ibm.com/auth/sps/samlidp/saml20/";
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
