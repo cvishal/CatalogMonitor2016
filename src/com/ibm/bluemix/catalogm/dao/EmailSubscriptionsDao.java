@@ -73,7 +73,7 @@ public class EmailSubscriptionsDao {
 				System.out.println("removeSubscription : " + query);
 				preparedStatement = (PreparedStatement) connection.prepareStatement(query);
 				preparedStatement.executeUpdate();
-				result = "You have been unsubscribed to then Bluemix Monitor service.";
+				result = "You have been unsubscribed to the Bluemix Monitor service.";
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
