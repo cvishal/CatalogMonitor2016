@@ -38,7 +38,7 @@ public class Scheduler {
 	
 	
 	//@Scheduled(cron="0 0/360 * * * ?")
-	@Scheduled(cron="0 10 11 * * *" )
+	@Scheduled(cron="0 40 12 * * *" )
 	//@Scheduled(fixedRate=43200000)
 	//@Scheduled(fixedRate=86400000)
 	public void catalogCheck(){

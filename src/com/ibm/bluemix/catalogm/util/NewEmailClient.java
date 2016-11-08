@@ -69,7 +69,7 @@ public class NewEmailClient {
 
 	public void sendEmail() {
 		System.out.println("Total updates are "+numberOfupdates);
-		if(numberOfupdates>20){
+		if(numberOfupdates>80){
 			System.out.println("Some Problem in parser.................oops....");
 			sendEmailWorkerError();
 		} else {
