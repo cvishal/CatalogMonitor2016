@@ -86,8 +86,8 @@ public class ServiceData {
 	}
 
 	private void setServiceData(String __serviceData) {
-		String endText = "</span>";
-		String beginTextServiceName = "<span class=\"tile-name\">";
+		String endText = "</p>";
+		String beginTextServiceName = "<p class=\"text__headline--catalog\">";
 		String _tmpString = __serviceData.substring(__serviceData.indexOf(beginTextServiceName));
 		// Part 1
 		// Sample <span class="tile-name">Apache Spark</span>
@@ -101,6 +101,7 @@ public class ServiceData {
 		// Part 2
 		// <span class="category">Data &amp; Analytics</span>
 		String beginTextCatName = "<span class=\"category\">";
+		endText = "</span>";
 		_tmpString = __serviceData.substring(__serviceData.indexOf(beginTextCatName));
 		i = beginTextCatName.length();
 		j = _tmpString.indexOf(endText);
@@ -112,7 +113,8 @@ public class ServiceData {
 		// Part 3
 		// <span class="tile-provider-name">IBM</span><span
 		// class="tile-stage-name">Beta</span>
-		String beginTextProName = "<span class=\"tile-provider-name\">";
+		String beginTextProName = "<div class=\"provider-tag\">";
+		endText = "</div>";
 		_tmpString = __serviceData.substring(__serviceData.indexOf(beginTextProName));
 		i = beginTextProName.length();
 		j = _tmpString.indexOf(endText);
@@ -122,7 +124,8 @@ public class ServiceData {
 		}
 
 		// Part 4
-		String beginTextStageName = "<span class=\"tile-stage-name\">";
+		//Stages like GA, Beta or experimental
+		/*String beginTextStageName = "<span class=\"tile-stage-name\">";
 		int stageIndex = __serviceData.indexOf(beginTextStageName);
 		if(stageIndex<0){
 			setStage("GA");
@@ -134,13 +137,27 @@ public class ServiceData {
 				stage = _tmpString.substring(i, j);
 				setStage(stage);
 			}
-		}
+		}*/
 		
 
+		/*// Part 5
+		String beginTextDescName = "span class=\"long-description\">";
+		endText = "</span>";
+		int startAlt = __serviceData.indexOf(beginTextDescName);
+		System.out.println("Start ALT is "+startAlt);
+		System.out.println("ServiceData"+ __serviceData);
+		_tmpString = __serviceData.substring(startAlt);
+		i = beginTextDescName.length();
+		j = _tmpString.indexOf("</span>");
+		if (i > 0) {
+			desc = _tmpString.substring(i, j);
+			setDesc(desc);
+		}*/
+		
 		// Part 5
 		String beginTextDescName = "alt=";
 		int startAlt = __serviceData.indexOf(beginTextDescName);
-		//System.out.println("Start ALT is "+startAlt);
+		System.out.println("Start ALT is "+startAlt);
 		//System.out.println("ServiceData"+ __serviceData);
 		_tmpString = __serviceData.substring(startAlt);
 		i = beginTextDescName.length();

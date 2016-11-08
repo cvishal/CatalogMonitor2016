@@ -38,7 +38,7 @@ public class Scheduler {
 	
 	
 	//@Scheduled(cron="0 0/360 * * * ?")
-	@Scheduled(cron="0 0 15 * * *" )
+	@Scheduled(cron="0 10 11 * * *" )
 	//@Scheduled(fixedRate=43200000)
 	//@Scheduled(fixedRate=86400000)
 	public void catalogCheck(){
@@ -143,18 +143,19 @@ public class Scheduler {
 		int servicesCount = 0;
 		int startPoint = 0;
 		while (response.indexOf(__start,startPoint) > 0) {
+			
 			startPoint = response.indexOf(__start);
 			response = response.substring(startPoint);
+			startPoint = 0;
 			int endPoint = response.indexOf(__end);
 			String __serviceData = response.substring(0, endPoint);
 			response = response.substring(endPoint);
 			servicesCount++;
-			startPoint = 0;
 			//System.out.println(" ******** "+__serviceData);
 			//ServiceData myservice = new ServiceData(__serviceData);
 			ServiceData myservice = new ServiceData(__serviceData,__isExperimental);
 			BluemixCatalog earlierData = myservice.fetchEarlierDataFromDB(); //		 //@@ REMOVAL HERE inside fetchEarlierDataFromDB()
-			String currentServiceName = myservice.getSeviceName();				
+			String currentServiceName = myservice.getSeviceName();			
 			if(earlierData!=null){				
 				boolean dbUpdateNeeded = false;
 				//Check if data is same or changed.
@@ -170,11 +171,11 @@ public class Scheduler {
 					email.appendMessage("<p>Change in existing service :"+currentServiceName+"</p><p>Earlier Category : "+earlierData.getCatagory()+"</p><p>New Category : "+myservice.getCatagory()+"</p>");
 					if(!dbUpdateNeeded) dbUpdateNeeded=true;
 				}				
-				if(!earlierData.getStage().equalsIgnoreCase(myservice.getStage())){
+				/*if(!earlierData.getStage().equalsIgnoreCase(myservice.getStage())){
 					//Change is Stage name.. Alert
 					email.appendMessage("<p>Change in existing service :"+currentServiceName+"</p><p>Earlier Stage : "+earlierData.getStage()+"</p><p>New Stage : "+myservice.getStage()+"</p>");
 					if(!dbUpdateNeeded) dbUpdateNeeded=true;
-				}
+				}*/
 				if(!earlierData.getDesc().equalsIgnoreCase(myservice.getDesc())){
 					//Change is Description name.. Alert
 					email.appendMessage("<p>Change in existing service :"+currentServiceName+"</p><p>Earlier Description : "+earlierData.getDesc()+"</p><p>New Description : "+myservice.getDesc()+"</p>");
