@@ -38,7 +38,7 @@ public class Scheduler {
 	
 	
 	//@Scheduled(cron="0 0/360 * * * ?")
-	@Scheduled(cron="0 40 12 * * *" )
+	@Scheduled(cron="0 0 15 * * *" )
 	//@Scheduled(fixedRate=43200000)
 	//@Scheduled(fixedRate=86400000)
 	public void catalogCheck(){
@@ -272,12 +272,12 @@ public class Scheduler {
 	}
 
 	private String getFormattedMessageRemoval(BluemixCatalog removedService) {
-		return "<p>Service is REMOVED :</p><p> Name : "+removedService.getSeviceName()+"("+removedService.getStage()+")</p><p>Vendor : "+removedService.getVendor()+"</p><p>Description : "+ removedService.getDesc()+ "</p>";
+		return "<p>Service is REMOVED :</p><p> Name : "+removedService.getSeviceName()+"</p><p>Vendor : "+removedService.getVendor()+"</p><p>Description : "+ removedService.getDesc()+ "</p>";
 	}
 
 
 	private String getFormattedMessage(ServiceData __myService) {
-		return "<p>New Service Found :</p><p> Name : "+__myService.seviceName+"("+__myService.getStage()+")</p><p>Category : "+__myService.getCatagory()+"</p><p>Vendor : "+__myService.getVendor()+"</p><p>Description : "+ __myService.getDesc()+ "</p>";
+		return "<p>New Service Found :</p><p> Name : "+__myService.seviceName+"</p><p>Category : "+__myService.getCatagory()+"</p><p>Vendor : "+__myService.getVendor()+"</p><p>Description : "+ __myService.getDesc()+ "</p>";
 	}
 	
 	public  void printSomething() {
