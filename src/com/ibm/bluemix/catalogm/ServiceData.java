@@ -125,7 +125,8 @@ public class ServiceData {
 
 		// Part 4
 		//Stages like GA, Beta or experimental
-		/*String beginTextStageName = "<span class=\"tile-stage-name\">";
+		String beginTextStageName = "<div class=\"stage-tag\">";
+		endText = "</div>";
 		int stageIndex = __serviceData.indexOf(beginTextStageName);
 		if(stageIndex<0){
 			setStage("GA");
@@ -137,23 +138,9 @@ public class ServiceData {
 				stage = _tmpString.substring(i, j);
 				setStage(stage);
 			}
-		}*/
+		}
 		
-
-		/*// Part 5
-		String beginTextDescName = "span class=\"long-description\">";
-		endText = "</span>";
-		int startAlt = __serviceData.indexOf(beginTextDescName);
-		System.out.println("Start ALT is "+startAlt);
-		System.out.println("ServiceData"+ __serviceData);
-		_tmpString = __serviceData.substring(startAlt);
-		i = beginTextDescName.length();
-		j = _tmpString.indexOf("</span>");
-		if (i > 0) {
-			desc = _tmpString.substring(i, j);
-			setDesc(desc);
-		}*/
-		
+	
 		// Part 5
 		String beginTextDescName = "alt=";
 		int startAlt = __serviceData.indexOf(beginTextDescName);

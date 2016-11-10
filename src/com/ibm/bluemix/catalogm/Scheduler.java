@@ -38,7 +38,7 @@ public class Scheduler {
 	
 	
 	//@Scheduled(cron="0 0/360 * * * ?")
-	@Scheduled(cron="0 0 11 * * *" )
+	@Scheduled(cron="0 0 15 * * *" )
 	//@Scheduled(fixedRate=43200000)
 	//@Scheduled(fixedRate=86400000)
 	public void catalogCheck(){
@@ -171,11 +171,11 @@ public class Scheduler {
 					email.appendMessage("<p>Change in existing service :"+currentServiceName+"</p><p>Earlier Category : "+earlierData.getCatagory()+"</p><p>New Category : "+myservice.getCatagory()+"</p>");
 					if(!dbUpdateNeeded) dbUpdateNeeded=true;
 				}				
-				/*if(!earlierData.getStage().equalsIgnoreCase(myservice.getStage())){
+				if(!earlierData.getStage().equalsIgnoreCase(myservice.getStage())){
 					//Change is Stage name.. Alert
 					email.appendMessage("<p>Change in existing service :"+currentServiceName+"</p><p>Earlier Stage : "+earlierData.getStage()+"</p><p>New Stage : "+myservice.getStage()+"</p>");
 					if(!dbUpdateNeeded) dbUpdateNeeded=true;
-				}*/
+				}
 				if(!earlierData.getDesc().equalsIgnoreCase(myservice.getDesc())){
 					//Change is Description name.. Alert
 					email.appendMessage("<p>Change in existing service :"+currentServiceName+"</p><p>Earlier Description : "+earlierData.getDesc()+"</p><p>New Description : "+myservice.getDesc()+"</p>");
