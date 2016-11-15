@@ -113,7 +113,7 @@ public class NewEmailClient {
 	    email.setTemplateId("c70d9e49-f552-4fe3-9830-6822fada1040");
 	    SMTPAPI _smtp = email.getSMTPAPI();
 	    
-	    String[] smtp2list = {"cvishal@in.ibm.com","spansari@in.ibm.com"};
+	    //String[] smtp2list = {"cvishal@in.ibm.com","spansari@in.ibm.com"};
 	    
     
 	    _smtp.addSubstitutions("-catalogupdates-", sgHelper.getListOfCatalogUpdates());
@@ -125,11 +125,11 @@ public class NewEmailClient {
 	    _smtp.addSection("-sectiondatadevworks-", finalDevWorks);
 	    _smtp.addSection("-sectiondatasof-", finalStackOF);
 	    
-		//_smtp.setTos(sgHelper.getEmail2() );
-	    _smtp.setTos(smtp2list);
+		_smtp.setTos(sgHelper.getEmail2() );
+	    //_smtp.setTos(smtp2list);
 	    
-	    //System.out.println("## EMail : "+_smtp.getSubstitutions());
-	    System.out.println("## EMail : "+ smtp2list);
+	    System.out.println("## EMail : "+_smtp.getSubstitutions());
+	    //System.out.println("## EMail : "+ smtp2list);
     	email.setSubject("** Automated Email: Bluemix Catalog and Services updates. FYI. **");
 	    email.setFrom(adminemail);
 	    email.setHtml(emailBody );
