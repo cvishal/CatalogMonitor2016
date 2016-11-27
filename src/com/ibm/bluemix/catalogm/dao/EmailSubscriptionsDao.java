@@ -13,7 +13,7 @@ public class EmailSubscriptionsDao {
 
 	private Connection connection;
 	PreparedStatement preparedStatement;
-	String tableName = "email_subscriptions";
+	String tableName = "email_subscriptions"; 
 	
 	public EmailSubscriptionsDao() {
 		connection = DbUtil.getConnection();
