@@ -87,8 +87,6 @@ public class NewEmailClient {
 
 	private void sendEmailWorkerError() {
 		// TODO Auto-generated method stub
-		SendGrid sendgrid = new SendGrid("vish.ac4@gmail.com", "passw0rd");
-		System.out.println("Email will send using using vish.ac4@gmail.com");
 	    SendGrid.Email email = new SendGrid.Email();
 	    System.out.println("## EMail sent to only VISHAL and SNEHAL only........... : ");
 	    email.setTo(new String[]{"cvishal@in.ibm.com","spansare@in.ibm.com"});	    
