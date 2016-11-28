@@ -39,7 +39,6 @@ public class NewEmailClient {
 		BluemixSGHelperDAO sgAccount = new BluemixSGHelperDAO();
 		String[] account = sgAccount.getSGAccountDetails();
 		sendgrid = new SendGrid(account[0],account[1]);
-		System.out.println("Sendgrid Account : " + account[0] + " and " + account[1]);
 
 	}
 	
@@ -125,8 +124,7 @@ public class NewEmailClient {
 		_smtp.setTos(sgHelper.getEmail2() );
 	    //_smtp.setTos(smtp2list);
 	    
-	    System.out.println("## EMail : "+_smtp.getSubstitutions());
-	    //System.out.println("## EMail : "+ smtp2list);
+	    //System.out.println("## EMail : "+_smtp.getSubstitutions());
     	email.setSubject("** Automated Email: Bluemix Catalog and Services updates. FYI. **");
 	    email.setFrom(adminemail);
 	    email.setHtml(emailBody );
@@ -154,7 +152,6 @@ public class NewEmailClient {
 	}
 	
 	public void processAnnouncements(String url2Monitor, List<OneNotification> listofAnnouncements) {
-		System.out.println("snehal processAnnouncements : " + listofAnnouncements.size());
 		if (listofAnnouncements.size() > 0) {
 //			announcementMessage = announcementMessage + "<br>";
 //			announcementMessage = announcementMessage + "+++++++++++++++++++++++++++++++<br>";
@@ -180,8 +177,6 @@ public class NewEmailClient {
 
 
 	public void processTopDiscussions(List<Discussion> topDiscussions) {
-		
-		System.out.println("snehal processTopDiscussions : " + numberOfDiscussions);
 		
 		
 //			discussionsMessage = discussionsMessage + "<br>";
@@ -211,9 +206,6 @@ public class NewEmailClient {
 	}
 	
 	public void processPublishedArticles(List<Article> topArticles) {
-		
-		System.out.println("snehal processPublishedArticles : " + numberOfArticles);
-		
 		
 //			articleMessage = articleMessage + "<br>";
 //			articleMessage = articleMessage + "-------------------------------------------<br>";

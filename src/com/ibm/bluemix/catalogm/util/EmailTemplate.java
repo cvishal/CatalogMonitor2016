@@ -28,14 +28,14 @@ public class EmailTemplate {
 		BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
 
 		String strLine;
-		System.out.println(sb.toString());
+		//System.out.println(sb.toString());
 		//Read File Line By Line
 		try {
 			while ((strLine = br.readLine()) != null)   {
 			  // Print the content on the console
 			  replaceData(strLine);	
 			  sb.append(strLine);
-			  System.out.println("----->" + strLine);
+			  //System.out.println("----->" + strLine);
 			  try {
 				Thread.currentThread().sleep(3000);
 			} catch (InterruptedException e) {

@@ -24,14 +24,12 @@ public class EmailSubscriptionsDao {
 		
 		try {
 			String query = "SELECT email_id from " + tableName;
-			System.out.println("getSubscribedEmails : " + query);
 			preparedStatement = (PreparedStatement) connection.prepareStatement(query);
 			ResultSet rs = (ResultSet) preparedStatement.executeQuery();
 			while (rs.next()) {
 				String email_id = rs.getString("email_id");
 				emailIds.add(email_id);
 				
-				System.out.println("getSubscribedEmails : Foudn Email ID : " + email_id);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

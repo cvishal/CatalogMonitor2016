@@ -39,7 +39,6 @@ public class PublishedArticles {
 	        {
 	        	Article article = new Article();
 	            SyndEntry entry = (SyndEntry) entryIter.next();
-	            System.out.println("Count : " + count++);
 	            System.out.println(entry.getTitle());
 	            
 	            article.setTitle(entry.getTitle());

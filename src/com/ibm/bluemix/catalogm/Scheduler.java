@@ -7,7 +7,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.scheduling.annotation.Scheduled;
@@ -21,7 +20,6 @@ import com.ibm.bluemix.catalogm.devworks.Article;
 import com.ibm.bluemix.catalogm.devworks.PublishedArticles;
 import com.ibm.bluemix.catalogm.notifications.json.OneNotification;
 import com.ibm.bluemix.catalogm.notifications.json.SingleNotification;
-import com.ibm.bluemix.catalogm.util.EmailClient;
 import com.ibm.bluemix.catalogm.util.NewEmailClient;
 import com.ibm.bluemix.catalogm.util.DbUtil;
 
@@ -38,7 +36,7 @@ public class Scheduler {
 	
 	
 	//@Scheduled(cron="0 0/360 * * * ?")
-	@Scheduled(cron="0 10 10 * * *" )
+	@Scheduled(cron="0 0 15 * * *" )
 	//@Scheduled(fixedRate=43200000)
 	//@Scheduled(fixedRate=86400000)
 	public void catalogCheck(){
@@ -168,21 +166,25 @@ public class Scheduler {
 						continue;
 					}
 					//Change is catagory name.. Alert
+					System.out.println("Change in existing service : "+currentServiceName+" Earlier Category : "+earlierData.getCatagory()+" New Category : "+myservice.getCatagory());
 					email.appendMessage("<p>Change in existing service :"+currentServiceName+"</p><p>Earlier Category : "+earlierData.getCatagory()+"</p><p>New Category : "+myservice.getCatagory()+"</p>");
 					if(!dbUpdateNeeded) dbUpdateNeeded=true;
 				}				
 				if(!earlierData.getStage().equalsIgnoreCase(myservice.getStage())){
 					//Change is Stage name.. Alert
+					System.out.println("Change in existing service : "+currentServiceName+" Earlier Stage : "+earlierData.getStage()+" New Stage : "+myservice.getStage());
 					email.appendMessage("<p>Change in existing service :"+currentServiceName+"</p><p>Earlier Stage : "+earlierData.getStage()+"</p><p>New Stage : "+myservice.getStage()+"</p>");
 					if(!dbUpdateNeeded) dbUpdateNeeded=true;
 				}
 				if(!earlierData.getDesc().equalsIgnoreCase(myservice.getDesc())){
 					//Change is Description name.. Alert
+					System.out.println("Change in existing service : "+currentServiceName+" Earlier Description : "+earlierData.getDesc()+" New Description : "+myservice.getDesc());
 					email.appendMessage("<p>Change in existing service :"+currentServiceName+"</p><p>Earlier Description : "+earlierData.getDesc()+"</p><p>New Description : "+myservice.getDesc()+"</p>");
 					if(!dbUpdateNeeded) dbUpdateNeeded=true;
 				}
 				if(!earlierData.getVendor().equalsIgnoreCase(myservice.getVendor())){
 					//Change is Vendor name.. Alert
+					System.out.println("Change in existing service : "+currentServiceName+" Earlier Vendor : "+earlierData.getVendor()+" New Vendor : "+myservice.getVendor());
 					email.appendMessage("<p>Change in existing service :"+currentServiceName+"</p><p>Earlier Vendor : "+earlierData.getVendor()+"</p><p>New Vendor : "+myservice.getVendor()+"</p>");
 					if(!dbUpdateNeeded) dbUpdateNeeded=true;
 				}

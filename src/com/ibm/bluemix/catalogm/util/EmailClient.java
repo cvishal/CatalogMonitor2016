@@ -130,7 +130,6 @@ public class EmailClient {
 	}
 	
 	public void processAnnouncements(String url2Monitor, List<OneNotification> listofAnnouncements) {
-		System.out.println("snehal processAnnouncements : " + listofAnnouncements.size());
 		if (listofAnnouncements.size() > 0) {
 			announcementMessage = announcementMessage + "<br>";
 			announcementMessage = announcementMessage + "-------------------------------------------------------------------------------<br>";
@@ -156,9 +155,6 @@ public class EmailClient {
 
 
 	public void processTopDiscussions(List<Discussion> topDiscussions) {
-		
-		System.out.println("snehal processTopDiscussions : " + numberOfDiscussions);
-		
 		
 			discussionsMessage = discussionsMessage + "<br>";
 			discussionsMessage = discussionsMessage + "-------------------------------------------------------------------------------<br>";
@@ -186,9 +182,6 @@ public class EmailClient {
 	}
 	
 	public void processPublishedArticles(List<Article> topArticles) {
-		
-		System.out.println("snehal processPublishedArticles : " + numberOfArticles);
-		
 		
 			articleMessage = articleMessage + "<br>";
 			articleMessage = articleMessage + "-------------------------------------------------------------------------------<br>";
