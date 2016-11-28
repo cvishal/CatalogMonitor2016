@@ -33,7 +33,7 @@ public class BluemixSGHelperDAO {
             //Assume that DB has only 1 entry
             if (rs.next()) {
             	rc[0] = rs.getString("name");
-            	rc[0] = rs.getString("pw");
+            	rc[1] = rs.getString("pw");
             }
         } catch (SQLException e) {
             e.printStackTrace();

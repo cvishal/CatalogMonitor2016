@@ -39,6 +39,7 @@ public class NewEmailClient {
 		BluemixSGHelperDAO sgAccount = new BluemixSGHelperDAO();
 		String[] account = sgAccount.getSGAccountDetails();
 		sendgrid = new SendGrid(account[0],account[1]);
+		System.out.println("Sendgrid Account : " + account[0] + " and " + account[1]);
 
 	}
 	
