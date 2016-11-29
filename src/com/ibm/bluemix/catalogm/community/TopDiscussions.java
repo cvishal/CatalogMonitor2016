@@ -40,7 +40,7 @@ public class TopDiscussions {
 	        	Discussion disc = new Discussion();
 	            SyndEntry entry = (SyndEntry) entryIter.next();
 	            System.out.println(entry.getTitle());
-	            
+	            count++;
 	            disc.setTitle(entry.getTitle());
 	            disc.setAuthor(entry.getAuthor());
 	            disc.setLink(entry.getLink());
