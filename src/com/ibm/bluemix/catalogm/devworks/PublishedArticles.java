@@ -40,7 +40,7 @@ public class PublishedArticles {
 	        	Article article = new Article();
 	            SyndEntry entry = (SyndEntry) entryIter.next();
 	            System.out.println(entry.getTitle());
-	            
+	            count++;
 	            article.setTitle(entry.getTitle());
 	            article.setLink(entry.getLink());
 	            article.setPublishDate(entry.getPublishedDate().toString());
