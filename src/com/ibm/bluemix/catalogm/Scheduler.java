@@ -279,7 +279,7 @@ public class Scheduler {
 
 
 	private String getFormattedMessage(ServiceData __myService) {
-		return "<p>New Service Found :</p><p> Name : "+__myService.seviceName+"</p><p>Category : "+__myService.getCatagory()+"</p><p>Vendor : "+__myService.getVendor()+"</p><p>Description : "+ __myService.getDesc()+ "</p>";
+		return "<p>New Service Found :</p><p> Name : "+__myService.seviceName+"</p><p>Category : "+__myService.getCatagory()+"</p><p>Stage : "+__myService.getStage()+"</p><p>Vendor : "+__myService.getVendor()+"</p><p>Description : "+ __myService.getDesc()+ "</p>";
 	}
 	
 	public  void printSomething() {
