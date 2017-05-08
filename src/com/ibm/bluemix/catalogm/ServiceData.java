@@ -6,10 +6,10 @@ import com.ibm.bluemix.catalogm.dao.BluemixCatalogDao;
 public class ServiceData {
 
 	String seviceName;
-	String catagory;
-	String vendor;
-	String desc;
-	String stage;
+	String catagory = "";
+	String vendor = "";
+	String desc = "";
+	String stage = "";
 
 	private BluemixCatalogDao catalogDao;
 
@@ -87,20 +87,31 @@ public class ServiceData {
 
 	private void setServiceData(String __serviceData) {
 		String endText = "</p>";
-		String beginTextServiceName = "<p class=\"text__headline--catalog\">";
+		String beginTextServiceName = "<p class=\"text__headline--catalog\"";
 		String _tmpString = __serviceData.substring(__serviceData.indexOf(beginTextServiceName));
+		
+		System.out.println("ServicecData _tmpString : " + _tmpString);
 		// Part 1
 		// Sample <span class="tile-name">Apache Spark</span>
 		int i = _tmpString.indexOf(beginTextServiceName) + beginTextServiceName.length();
 		int j = _tmpString.indexOf(endText);
 		if (i > 0) {
-			seviceName = _tmpString.substring(i, j);
+			String _tmpStringService = _tmpString.substring(i, j);
+			System.out.println("ServicecData _tmpStringService : " + _tmpStringService);
+			String [] arr = _tmpStringService.split(">");
+			System.out.println("arr.length : " + arr.length);
+			if (arr.length > 1)
+				seviceName = arr[1];
+			else
+				System.out.println("Error in parsing...");
+			
 			setSeviceName(seviceName);
+			System.out.println("snehal service name : " + seviceName);
 		}
 
 		// Part 2
 		// <span class="category">Data &amp; Analytics</span>
-		String beginTextCatName = "<span class=\"category\">";
+		/*String beginTextCatName = "<span class=\"category\">";
 		endText = "</span>";
 		_tmpString = __serviceData.substring(__serviceData.indexOf(beginTextCatName));
 		i = beginTextCatName.length();
@@ -108,24 +119,33 @@ public class ServiceData {
 		if (i > 0) {
 			catagory = _tmpString.substring(i, j);
 			setCatagory(catagory);
-		}
+		}*/
 
 		// Part 3
 		// <span class="tile-provider-name">IBM</span><span
 		// class="tile-stage-name">Beta</span>
-		String beginTextProName = "<div class=\"provider-tag\">";
+		String beginTextProName = "<div class=\"provider-tag\"";
 		endText = "</div>";
-		_tmpString = __serviceData.substring(__serviceData.indexOf(beginTextProName));
-		i = beginTextProName.length();
-		j = _tmpString.indexOf(endText);
-		if (i > 0) {
-			vendor = _tmpString.substring(i, j);
-			setVendor(vendor);
+		if (__serviceData.indexOf(beginTextProName) != -1) {
+			_tmpString = __serviceData.substring(__serviceData.indexOf(beginTextProName));
+			i = beginTextProName.length();
+			j = _tmpString.indexOf(endText);
+			if (i > 0) {
+				String tmpcat = _tmpString.substring(i, j);
+				String [] arr = tmpcat.split(">");
+				System.out.println("arr.length : " + arr.length);
+				if (arr.length > 1)
+					vendor = arr[1];
+				
+				setVendor(vendor);
+				System.out.println("snehal vendor : " + vendor);
+			}
 		}
+		
 
 		// Part 4
 		//Stages like GA, Beta or experimental
-		String beginTextStageName = "<div class=\"stage-tag\">";
+		String beginTextStageName = "<div class=\"stage-tag\"";
 		endText = "</div>";
 		int stageIndex = __serviceData.indexOf(beginTextStageName);
 		if(stageIndex<0){
@@ -135,16 +155,40 @@ public class ServiceData {
 			i = beginTextStageName.length();
 			j = _tmpString.indexOf(endText);
 			if (i > 0) {
-				stage = _tmpString.substring(i, j);
+				String tmpcat = _tmpString.substring(i, j);
+				String [] arr = tmpcat.split(">");
+				System.out.println("arr.length : " + arr.length);
+				if (arr.length > 1)
+					stage = arr[1];
+				
 				setStage(stage);
 			}
 		}
+		System.out.println("snehal stage : " + stage);
 		
 	
 		// Part 5
-		String beginTextDescName = "alt=";
-		int startAlt = __serviceData.indexOf(beginTextDescName);
+		String beginTextDescName = "<p class=\"text__desc--catalog\"";
+		String endDescText = "</p>";
+		if(__serviceData.indexOf(beginTextDescName) != -1) {
+			String _descString = __serviceData.substring(__serviceData.indexOf(beginTextDescName));
+			i = beginTextDescName.length();
+			j = _descString.indexOf(endDescText);
+			if (i > 0) {
+				String tmpcat = _descString.substring(i, j);
+				String [] arr = tmpcat.split(">");
+				System.out.println("arr.length : " + arr.length);
+				if (arr.length > 1)
+					desc = arr[1];
+				
+				setDesc(desc);
+				System.out.println("snehal desc : " + desc);
+			}
+		}
 		
+		
+		/*int startAlt = __serviceData.indexOf(beginTextDescName);
+		System.out.println("Start ALT is "+startAlt);
 		//System.out.println("ServiceData"+ __serviceData);
 		_tmpString = __serviceData.substring(startAlt);
 		i = beginTextDescName.length();
@@ -152,7 +196,9 @@ public class ServiceData {
 		if (i > 0) {
 			desc = _tmpString.substring(i, j);
 			setDesc(desc);
-		}
+		}*/
+		
+		System.out.println("Done creating Object for : " + seviceName);
 
 	}
 

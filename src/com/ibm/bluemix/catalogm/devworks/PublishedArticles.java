@@ -17,7 +17,7 @@ public class PublishedArticles {
 		
 		try {
 			URLConnection openConnection = new URL("http://www.ibm.com/developerworks/views/global/rss/libraryview.jsp?site_id=1&contentarea_by=Cloud%20computing&topic_by=Bluemix&product_by=-1&search_by=&industry_by=-1&sort_by=Date&series_title_by=&type_by=All%20Types").openConnection();
-			openConnection.setRequestProperty("User-Agent", "Mozilla/5.0");
+			//openConnection.setRequestProperty("User-Agent", "Mozilla/5.0");
 			InputStream is = openConnection.getInputStream();
 			
 			if("gzip".equals(openConnection.getContentEncoding())){

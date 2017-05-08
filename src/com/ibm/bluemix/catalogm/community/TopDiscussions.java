@@ -17,7 +17,7 @@ public class TopDiscussions {
 		
 		try {
 			URLConnection openConnection = new URL("http://stackoverflow.com/feeds/tag?tagnames=ibm-bluemix&sort=newest").openConnection();
-			openConnection.setRequestProperty("User-Agent", "Mozilla/5.0");
+			//openConnection.setRequestProperty("User-Agent", "Mozilla/5.0");
 			InputStream is = openConnection.getInputStream();
 			
 			if("gzip".equals(openConnection.getContentEncoding())){

@@ -121,8 +121,8 @@ public class NewEmailClient {
 	    _smtp.addSection("-sectiondatadevworks-", finalDevWorks);
 	    _smtp.addSection("-sectiondatasof-", finalStackOF);
 	    
-		_smtp.setTos(sgHelper.getEmail2() );
-	    //_smtp.setTos(smtp2list);
+		//_smtp.setTos(sgHelper.getEmail2() );
+	    _smtp.setTos(new String[]{"cvishal@in.ibm.com","spansare@in.ibm.com"});
 	    
 	    //System.out.println("## EMail : "+_smtp.getSubstitutions());
     	email.setSubject("** Automated Email: Bluemix Catalog and Services updates. FYI. **");
