@@ -202,7 +202,8 @@ while (response.indexOf(__category_start,startPoint) > 0) {
 				BluemixCatalog earlierData = myservice.fetchEarlierDataFromDB(); //		 //@@ REMOVAL HERE inside fetchEarlierDataFromDB()
 				String currentServiceName = myservice.getSeviceName();
 			
-				if(earlierData!=null){				
+				//temporary fix for Activity Tracker
+				if(earlierData!=null & !(currentServiceName.equals("Activity Tracker"))){				
 					boolean dbUpdateNeeded = false;
 					//Check if data is same or changed.
 					if(!earlierData.getCatagory().equalsIgnoreCase(myservice.getCatagory())){
@@ -239,7 +240,7 @@ while (response.indexOf(__category_start,startPoint) > 0) {
 						myservice.updateHistory();
 					}
 					
-				}else{
+				}else if (!(currentServiceName.equals("Activity Tracker"))){
 					    email.appendMessage(getFormattedMessage(myservice));				    
 					    System.out.println("Service : "+myservice.getSeviceName()+". IS NEW SERVICE..");
 					    if(currentServiceName!=null && currentServiceName.equalsIgnoreCase("")){
