@@ -16,7 +16,8 @@ public class TopDiscussions {
 		List<Discussion> topDiscussions = new ArrayList<Discussion>();
 		
 		try {
-			URLConnection openConnection = new URL("http://stackoverflow.com/feeds/tag?tagnames=ibm-bluemix&sort=newest").openConnection();
+			//URLConnection openConnection = new URL("http://stackoverflow.com/feeds/tag?tagnames=ibm-bluemix&sort=newest").openConnection();
+			URLConnection openConnection = new URL("https://stackoverflow.com/feeds/tag?tagnames=ibm-bluemix&amp;sort=newest").openConnection();
 			//openConnection.setRequestProperty("User-Agent", "Mozilla/5.0");
 			InputStream is = openConnection.getInputStream();
 			
